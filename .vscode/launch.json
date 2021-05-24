@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LeagueOfChampionsApplication<league-of-champions>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.ashxnth.leagueofchampions.LeagueOfChampionsApplication",
+            "projectName": "league-of-champions",
+            "args": ""
+        }
+    ]
+}
