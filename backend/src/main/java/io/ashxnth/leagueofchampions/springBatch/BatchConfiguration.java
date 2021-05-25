@@ -19,6 +19,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+import io.ashxnth.leagueofchampions.model.Match;
+
 @Configuration
 @EnableBatchProcessing
 public class BatchConfiguration {
@@ -56,14 +58,19 @@ public class BatchConfiguration {
 
     @Bean
     public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
-        return jobBuilderFactory.get("importUserJob").incrementer(new RunIdIncrementer()).listener(listener).flow(step1)
-                .end().build();
+        return jobBuilderFactory.get("importUserJob")
+            .incrementer(new RunIdIncrementer())
+            .listener(listener)
+            .flow(step1)
+            .end().build();
     }
 
     @Bean
     public Step step1(JdbcBatchItemWriter<Match> writer) {
-        return stepBuilderFactory.get("step1").<RawMatch, Match>chunk(10).reader(reader()).processor(processor())
-                .writer(writer).build();
+        return stepBuilderFactory.get("step1").<RawMatch, Match>chunk(10)
+            .reader(reader())
+            .processor(processor())
+            .writer(writer).build();
     }
 
 }

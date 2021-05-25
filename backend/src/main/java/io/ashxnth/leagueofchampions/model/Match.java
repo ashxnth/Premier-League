@@ -1,4 +1,4 @@
-package io.ashxnth.leagueofchampions.springBatch;
+package io.ashxnth.leagueofchampions.model;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -18,7 +18,7 @@ public class Match {
     private int awayGoals;
     private String winningTeam;
 
-    Match(String season, LocalDate date, String homeTeam, String awayTeam, int homeGoals, int awayGoals, String winningTeam) {
+    public Match(String season, LocalDate date, String homeTeam, String awayTeam, int homeGoals, int awayGoals, String winningTeam) {
         this.id = UUID.randomUUID().toString(); 
         this.season = season;
         this.date = date;
