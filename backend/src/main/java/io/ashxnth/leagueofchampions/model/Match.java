@@ -18,6 +18,8 @@ public class Match {
     private int awayGoals;
     private String winningTeam;
 
+    public Match() {}
+
     public Match(String season, LocalDate date, String homeTeam, String awayTeam, int homeGoals, int awayGoals, String winningTeam) {
         this.id = UUID.randomUUID().toString(); 
         this.season = season;
