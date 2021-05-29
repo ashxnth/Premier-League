@@ -10,11 +10,11 @@ import io.ashxnth.leagueofchampions.model.Match;
 import io.ashxnth.leagueofchampions.repository.MatchRepository;
 
 @RestController
-public class TeamController {
+public class MatchController {
 
     private MatchRepository matchRepository;
 
-    public TeamController(MatchRepository matchRepository) {
+    public MatchController(MatchRepository matchRepository) {
         this.matchRepository = matchRepository;
     }
 
