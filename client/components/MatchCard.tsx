@@ -1,5 +1,5 @@
+import { Box, Center, Heading, Text, VStack } from "@chakra-ui/react";
 import React from "react";
-import {Box, Center, Heading, Text, VStack} from "@chakra-ui/react";
 
 export default function MatchCard(props) {
     return (

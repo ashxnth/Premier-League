@@ -1,8 +1,8 @@
-import React from 'react'
 import { Container } from "@chakra-ui/react";
-import MatchCard from '../../components/MatchCard'
-import { useRouter } from 'next/router'
-import Navbar from '../../components/Navbar'
+import { useRouter } from 'next/router';
+import React from 'react';
+import MatchCard from '../../components/MatchCard';
+import Navbar from '../../components/Navbar';
 
 export default function MatchView() {
     const router = useRouter()
@@ -40,15 +40,15 @@ export default function MatchView() {
     let matches = [match1, match2, match3];
     return (
         <div>
-            <Navbar name="Premier League"/>
+            <Navbar name="Premier League" />
             <Container maxW="container.xl">
                 {
                     matches.map((match) => {
                         return <MatchCard
                             key={match.id}
                             teamOne={match.homeTeam}
-                            teamTwo={match.awayTeam} 
-                            teamOneScore={match.homeGoals} 
+                            teamTwo={match.awayTeam}
+                            teamOneScore={match.homeGoals}
                             teamTwoScore={match.awayGoals}
                             date={match.date}
                             color={match.winningTeam == "H" ? "blue.500" : (match.winningTeam == "D" ? "purple.500" : "pink.500")}

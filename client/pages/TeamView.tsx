@@ -1,6 +1,6 @@
-import React from 'react'
 import { Container, SimpleGrid } from "@chakra-ui/react";
-import TeamCard from '../components/TeamCard'
+import React from 'react';
+import TeamCard from '../components/TeamCard';
 
 export default function TeamView() {
     const teams = ["Arsenal", "Chelsea", "Manchester"];

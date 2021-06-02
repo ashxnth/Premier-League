@@ -1,6 +1,6 @@
-import React from 'react'
-import Link from 'next/link'
-import { Heading, Flex, Box, Button, Menu, MenuButton, MenuItemOption, MenuList, MenuOptionGroup } from "@chakra-ui/react"
+import { Flex, Heading } from "@chakra-ui/react";
+import Link from 'next/link';
+import React from 'react';
 
 export default function Navbar(props) {
     return (

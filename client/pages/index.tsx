@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
-import MatchView from './teams/[teamName]'
 import TeamView from './TeamView'
 
 export default function Home() {
@@ -9,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Premier League</title>
       </Head>
-      <Navbar name="Premier League"/>
+      <Navbar name="Premier League" />
       <TeamView />
     </div>
   )
