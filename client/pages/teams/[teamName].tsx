@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Badge, Box, Container, Slider, SliderFilledTrack, SliderThumb, SliderTrack } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import MatchCard from '../../components/MatchCard';
@@ -8,16 +8,60 @@ export default function MatchView() {
     const router = useRouter()
     const { teamName, season } = router.query
     const [match, setMatches] = useState([]);
-    const [currentSeason, setCurrentSeason] = useState(null);
+    const [currentSeason, setCurrentSeason] = useState("2019-20");
     useEffect(() => {
-        const fetchMatches = async () => {
-            setCurrentSeason(season);
-            const response = await fetch(`http://localhost:8080/teams/${teamName}/matches/${currentSeason}`);
-            const matchList = await response.json();
-            setMatches(matchList);
+        fetch('http://localhost:8080/teams/${teamName}/matches/${currentSeason}')
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            setMatches(responseJSON);
+        });
+    }, []);
+    function convertValueToSeason(value) {
+        switch (value) {
+            case 0:
+                return "2000-01"
+            case 10:
+                return "2001-02"
+            case 20:
+                return "2002-03"
+            case 30:
+                return "2003-04"
+            case 40:
+                return "2004-05"
+            case 50:
+                return "2005-06"
+            case 60:
+                return "2006-07"
+            case 70:
+                return "2007-08"
+            case 80:
+                return "2008-09"
+            case 90:
+                return "2009-10"
+            case 100:
+                return "2010-11"
+            case 110:
+                return "2011-12"
+            case 120:
+                return "2012-13"
+            case 130:
+                return "2013-14"
+            case 140:
+                return "2014-15"
+            case 150:
+                return "2015-16"
+            case 160:
+                return "2016-17"
+            case 170:
+                return "2017-18"
+            case 180:
+                return "2018-19"
+            case 190:
+                return "2019-20"
+            case 200:
+                return "2020-21"
         }
-        fetchMatches();
-    }, [match, currentSeason]);
+    }
     const match1 = {
         id: 1,
         season: "2019-20",
@@ -48,12 +92,28 @@ export default function MatchView() {
         awayGoals: 4,
         winningTeam: "A"
     }
-    //let matches = [match1, match2, match3];
+    // let match = [match1, match2, match3];
     return (
         <div>
             <Navbar name="Premier League" />
-            <span onClick={() => setCurrentSeason('2018-19')}>Click</span>
             <Container maxW="container.xl">
+                <Badge mt={4} fontSize="2em" colorScheme="pink">
+                    Season: {currentSeason}
+                </Badge>
+                <Slider
+                    defaultValue={180}
+                    min={0}
+                    max={200}
+                    step={10}
+                    colorScheme="pink"
+                    onChange={(value) => setCurrentSeason(convertValueToSeason(value))}
+                >
+                    <SliderTrack bg="purple.200">
+                        <Box position="relative" right={10} />
+                        <SliderFilledTrack />
+                    </SliderTrack>
+                    <SliderThumb boxSize={6} />
+                </Slider>
                 {
                     match.map((match) => {
                         return <MatchCard

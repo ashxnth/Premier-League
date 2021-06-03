@@ -2,16 +2,15 @@ import { Container, SimpleGrid } from "@chakra-ui/react";
 import React, { useEffect, useState } from 'react';
 import TeamCard from '../components/TeamCard';
 
-export default function TeamView({ data }) {
-    const [teams, setTeams] = useState([]);
+export default function TeamView() {
+    const [teams, setTeams] = useState(["Arsenal", "Chelsea"]);
     useEffect(() => {
-        const getTeams = async () => {
-            const response = await fetch('http://localhost:8080/teams');
-            const teamList = await response.json();
-            setTeams(teamList);
-        }
-        getTeams();
-    });
+        fetch('http://localhost:8080/teams/')
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            setTeams(responseJSON);
+        });
+    }, []);
     return (
         <Container maxW="container.xl">
             <SimpleGrid columns={2} spacingX={4}>{
