@@ -1,12 +1,23 @@
 import { Container } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MatchCard from '../../components/MatchCard';
 import Navbar from '../../components/Navbar';
 
 export default function MatchView() {
     const router = useRouter()
-    const { teamName } = router.query
+    const { teamName, season } = router.query
+    const [match, setMatches] = useState([]);
+    const [currentSeason, setCurrentSeason] = useState(null);
+    useEffect(() => {
+        const fetchMatches = async () => {
+            setCurrentSeason(season);
+            const response = await fetch(`http://localhost:8080/teams/${teamName}/matches/${currentSeason}`);
+            const matchList = await response.json();
+            setMatches(matchList);
+        }
+        fetchMatches();
+    }, [match, currentSeason]);
     const match1 = {
         id: 1,
         season: "2019-20",
@@ -37,13 +48,14 @@ export default function MatchView() {
         awayGoals: 4,
         winningTeam: "A"
     }
-    let matches = [match1, match2, match3];
+    //let matches = [match1, match2, match3];
     return (
         <div>
             <Navbar name="Premier League" />
+            <span onClick={() => setCurrentSeason('2018-19')}>Click</span>
             <Container maxW="container.xl">
                 {
-                    matches.map((match) => {
+                    match.map((match) => {
                         return <MatchCard
                             key={match.id}
                             teamOne={match.homeTeam}

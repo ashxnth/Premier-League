@@ -9,7 +9,7 @@ export default function MatchCard(props) {
                     <VStack spacing={0}>
                         <Heading pt={2}>{props.teamOne + " vs. " + props.teamTwo}</Heading>
                         <Text fontSize="4xl">
-                            <b>1 - 0</b>
+                            <b>{props.teamOneScore + ' - ' + props.teamTwoScore}</b>
                         </Text>
                         <Text fontSize="xl">{props.date}</Text>
                     </VStack>

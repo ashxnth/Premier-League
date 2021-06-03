@@ -5,10 +5,10 @@ export default function TeamCard(props) {
   return (
     <Box
       as="a"
-      href="https://chakra-ui.com"
+      href={`/teams/${props.team}?season=2019-20`}
       mt={4}
       borderRadius="lg"
-      bg="black"
+      bg="green.600"
       w="100%"
       color="white"
     >
