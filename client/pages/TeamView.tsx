@@ -1,9 +1,9 @@
 import { Container, SimpleGrid } from "@chakra-ui/react";
 import React, { useEffect, useState } from 'react';
-import TeamCard from '../components/TeamCard';
+import { TeamCard } from '../components/TeamCard';
 
-export default function TeamView() {
-    const [teams, setTeams] = useState(["Arsenal", "Chelsea"]);
+export const TeamView: React.FC = () => {
+    const [teams, setTeams] = useState<Array<string>>(["Arsenal", "Chelsea"]);
     useEffect(() => {
         fetch('http://localhost:8080/teams/')
         .then((response) => response.json())

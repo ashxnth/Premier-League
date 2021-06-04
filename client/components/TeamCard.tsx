@@ -1,11 +1,11 @@
 import { Box, Center, Heading } from "@chakra-ui/react";
 import React from "react";
 
-export default function TeamCard(props) {
+export const TeamCard: React.FC<{ team: string }> = ({ team }) => {
   return (
     <Box
       as="a"
-      href={`/teams/${props.team}?season=2019-20`}
+      href={`/teams/${team}?season=2019-20`}
       mt={4}
       borderRadius="lg"
       bg="green.600"
@@ -13,7 +13,7 @@ export default function TeamCard(props) {
       color="white"
     >
       <Center>
-        <Heading m={4}>{props.team}</Heading>
+        <Heading m={4}>{team}</Heading>
       </Center>
     </Box>
   );

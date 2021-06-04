@@ -1,16 +1,27 @@
 import { Badge, Box, Container, Slider, SliderFilledTrack, SliderThumb, SliderTrack } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
-import MatchCard from '../../components/MatchCard';
-import Navbar from '../../components/Navbar';
+import { MatchCard } from '../../components/MatchCard';
+import { Navbar } from '../../components/Navbar';
+
+interface Match {
+    id: string,
+    season: string,
+    date: string,
+    homeTeam: string,
+    awayTeam: string,
+    homeGoals: number,
+    awayGoals: number,
+    winningTeam: string
+}
 
 export default function MatchView() {
     const router = useRouter()
-    const { teamName, season } = router.query
-    const [match, setMatches] = useState([]);
-    const [currentSeason, setCurrentSeason] = useState("2019-20");
+    const { teamName }= router.query
+    const [match, setMatches] = useState<Array<Match>>([]);
+    const [currentSeason, setCurrentSeason] = useState<string>("2019-20");
     useEffect(() => {
-        fetch('http://localhost:8080/teams/${teamName}/matches/${currentSeason}')
+        fetch(`http://localhost:8080/teams/${teamName}/matches/${currentSeason}`)
         .then((response) => response.json())
         .then((responseJSON) => {
             setMatches(responseJSON);
@@ -83,7 +94,7 @@ export default function MatchView() {
         winningTeam: "D"
     }
     const match3 = {
-        id: 2,
+        id: 3,
         season: "2019-20",
         date: "2019-05-03",
         homeTeam: "Man City",
@@ -92,7 +103,7 @@ export default function MatchView() {
         awayGoals: 4,
         winningTeam: "A"
     }
-    // let match = [match1, match2, match3];
+    //let match = [match1, match2, match3];
     return (
         <div>
             <Navbar name="Premier League" />
