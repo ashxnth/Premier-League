@@ -1,4 +1,4 @@
-# League-of-Champions
+# Premier League
 A dashboard to view 8000+ soccer matches within a 20 year period for the English Premier League.
 
 ## Final Product
