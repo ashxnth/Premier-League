@@ -2,4 +2,4 @@
 A dashboard to view Premier League Soccer matches.
 
 ## Final Product
-![Final Product](https://raw.githubusercontent.com/ashxnth/League-of-Champions/main/PremierLeague.png?token=AODCFSGXU7VD4QREAZKEZVTBCADTA)
+![Final Product](https://raw.githubusercontent.com/ashxnth/League-of-Champions/main/PremierLeague.png)
